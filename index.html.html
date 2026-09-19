@@ -570,13 +570,29 @@ nav {
     height: 4px;
   }
 
-  .sz-cursor-ring.click {
-    animation: szCursorClick .42s ease-out;
+ .sz-cursor-ring::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid rgba(101, 169, 255, .9);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sz-cursor-ring.click::after {
+  animation: szCursorClick .42s ease-out;
+}
+
+@keyframes szCursorClick {
+  0% {
+    transform: scale(.75);
+    opacity: 1;
   }
 
-  @keyframes szCursorClick {
-    0% { transform: translate(-50%, -50%) scale(.75); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
   }
 }
 
